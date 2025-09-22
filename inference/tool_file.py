@@ -35,7 +35,6 @@ sys.path.append(os.path.dirname(current_dir))
 sys.path.append('../../')  
 
 from file_tools.file_parser import SingleFileParser, compress
-from file_tools.video_agent import VideoAgent
 
 FILE_SUMMARY_PROMPT = """
 Please process the following file content and user goal to extract relevant information:
@@ -130,12 +129,5 @@ class FileParser(BaseTool):
             outputs.extend([f'File token number: {len(parsed_file_content.split())}\nFile content:\n']+response)
 
         
-        if len(omnifile_path):
-            params['files'] = omnifile_path
-            agent = VideoAgent()
-            res = await agent.call(params)
-
-            res = json.loads(res)
-            outputs += res
         
         return outputs

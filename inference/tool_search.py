@@ -108,6 +108,7 @@ class Search(BaseTool):
     
     def search_with_serp(self, query: str):
         result = self.google_search_with_serp(query)
+        print(f"[Search] Query: {query} \nResult: {result}")
         return result
 
     def call(self, params: Union[str, dict], **kwargs) -> str:

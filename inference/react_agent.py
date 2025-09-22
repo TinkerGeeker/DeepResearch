@@ -20,7 +20,7 @@ import asyncio
 
 from tool_file import *
 from tool_scholar import *
-from tool_python import *
+# from tool_python import *
 from tool_search import *
 from tool_visit import *
 
@@ -34,7 +34,7 @@ TOOL_CLASS = [
     Scholar(),
     Visit(),
     Search(),
-    PythonInterpreter(),
+    # PythonInterpreter(),
 ]
 TOOL_MAP = {tool.name: tool for tool in TOOL_CLASS}
 
@@ -59,8 +59,8 @@ class MultiTurnReactAgent(FnCallAgent):
     
     def call_server(self, msgs, planning_port, token_count=0, max_tries=10):
         
-        openai_api_key = "EMPTY"
-        openai_api_base = f"http://127.0.0.1:{planning_port}/v1"
+        openai_api_key = os.environ.get("API_KEY")
+        openai_api_base = os.environ.get("API_BASE")
 
         client = OpenAI(
             api_key=openai_api_key,
@@ -69,12 +69,12 @@ class MultiTurnReactAgent(FnCallAgent):
         )
 
         base_sleep_time = 1 
-        max_tokens = 128 * 1024 - token_count - 1000
+        max_tokens = 108 * 1024
         for attempt in range(max_tries):
             try:
                 print(f"--- Attempting to call the service, try {attempt + 1}/{max_tries} ---")
                 chat_response = client.chat.completions.create(
-                    model=self.model,
+                    model="alibaba/tongyi-deepresearch-30b-a3b",
                     messages=msgs,
                     stop=["\n<tool_response>", "<tool_response>"],
                     temperature=self.llm_generate_cfg.get('temperature', 0.6),
