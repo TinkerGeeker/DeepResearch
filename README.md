@@ -1,8 +1,12 @@
 # 基于OpenRouterAPI调用模型的Agent魔改
 1、注释掉Prompt里面关于Python解释器的提示词，并去掉Python和videoAgent两个工具
+
 2、修改react_agent.py和tool_visit.py适配openRouter API
+
 3、修改eval_data/example.jsonl中的问题，如"调研一下什么是Agent的记忆。"
-4、增加requirements-for-openRouter.txt文件，openRouter API最小依赖
+
+4、增加requirements-for-openRouter.txt文件，openRouter API最小依赖,pip install -r requirements-for-openRouter.txt
+
 5、增加run_react_by_openRouter.sh，配置单进程单次执行
 
 # 用法
