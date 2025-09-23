@@ -69,7 +69,7 @@ class MultiTurnReactAgent(FnCallAgent):
         )
 
         base_sleep_time = 1 
-        max_tokens = 108 * 1024
+        max_tokens = 10000
         for attempt in range(max_tries):
             try:
                 print(f"--- Attempting to call the service, try {attempt + 1}/{max_tries} ---")
@@ -189,7 +189,7 @@ class MultiTurnReactAgent(FnCallAgent):
             if num_llm_calls_available <= 0 and '<answer>' not in content:
                 messages[-1]['content'] = 'Sorry, the number of llm calls exceeds the limit.'
 
-            max_tokens = 128 * 1024 - 3000
+            max_tokens = 110 * 1024
             token_count = self.count_tokens(messages)
             print(f"round: {round}, token count: {token_count}")
 
