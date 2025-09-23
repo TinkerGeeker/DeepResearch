@@ -9,6 +9,8 @@
 
 5、增加run_react_by_openRouter.sh，配置单进程单次执行
 
+详细的代码变更，查看：https://github.com/TinkerGeeker/DeepResearch/commit/bce4a2d3d4d1f86464c5f5171eab21d2499c9afb
+
 # 用法
 在run_react_by_openRouter.sh配置好API_KEY，在eval_data/example.jsonl修改问题之后可以直接运行，./run_react_by_openRouter.sh，enjoy~
 
