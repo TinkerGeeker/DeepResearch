@@ -85,9 +85,15 @@ class MultiTurnReactAgent(FnCallAgent):
                 )
                 content = chat_response.choices[0].message.content
 
+                reasoning = chat_response.choices[0].message.reasoning
+
                 # OpenRouter provides API calling. If you want to use OpenRouter, you need to uncomment line 89 - 90.
-                reasoning_content = "<think>\n" + chat_response.choices[0].message.reasoning.strip() + "\n</think>"
-                content = reasoning_content + content                
+                if reasoning and reasoning.strip():
+                    print("add reasoning")
+                    reasoning_content = "<think>\n" + reasoning.strip() + "\n</think>"
+                    content = reasoning_content + content
+                else:
+                    print("no reasoning")  
                 
                 if content and content.strip():
                     print("--- Service call successful, received a valid response ---")
