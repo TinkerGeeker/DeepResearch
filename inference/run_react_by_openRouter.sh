@@ -43,4 +43,4 @@ export API_BASE=https://openrouter.ai/api/v1
 export SUMMARY_MODEL_NAME=x-ai/grok-4-fast:free
 # =============================================================================
 
-python run_multi_react.py --dataset "$DATASET" --output "$OUTPUT_PATH" --max_workers $MAX_WORKERS --roll_out_count $ROLLOUT_COUNT
+python run_multi_react.py --model $MODEL_PATH --dataset "$DATASET" --output "$OUTPUT_PATH" --max_workers $MAX_WORKERS --roll_out_count $ROLLOUT_COUNT
