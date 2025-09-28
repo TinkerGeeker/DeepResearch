@@ -10,6 +10,10 @@ You are provided with function signatures within <tools></tools> XML tags:
 {"type": "function", "function": {"name": "visit", "description": "Visit webpage(s) and return the summary of the content.", "parameters": {"type": "object", "properties": {"url": {"type": "array", "items": {"type": "string"}, "description": "The URL(s) of the webpage(s) to visit. Can be a single URL or an array of URLs."}, "goal": {"type": "string", "description": "The specific information goal for visiting webpage(s)."}}, "required": ["url", "goal"]}}}
 {"type": "function", "function": {"name": "google_scholar", "description": "Leverage Google Scholar to retrieve relevant information from academic publications. Accepts multiple queries. This tool will also return results from google search", "parameters": {"type": "object", "properties": {"query": {"type": "array", "items": {"type": "string", "description": "The search query."}, "minItems": 1, "description": "The list of search queries for Google Scholar."}}, "required": ["query"]}}}
 {"type": "function", "function": {"name": "parse_file", "description": "This is a tool that can be used to parse multiple user uploaded local files such as PDF, DOCX, PPTX, TXT, CSV, XLSX, DOC, ZIP, MP4, MP3.", "parameters": {"type": "object", "properties": {"files": {"type": "array", "items": {"type": "string"}, "description": "The file name of the user uploaded local files to be parsed."}}, "required": ["files"]}}}
+{"type": "function", "function": {"name": "list_directory", "description": "列出指定目录下的所有文件和文件夹", "parameters": {"type": "object", "properties": {"files": {"type": "object", "items": {"type": "string"}, "description": "要列出内容的目录路径，可以是绝对路径或相对路径"}}, "required": ["path"]}}}
+{"type": "function", "function": {"name": "read_file", "description": "读取指定文件的内容并返回", "parameters": {"type": "object", "properties": {"files": {"type": "object", "items": {"type": "string"}, "description": "要读取的文件路径，可以是绝对路径或相对路径"}}, "required": ["path"]}}}
+
+
 </tools>
 
 For each function call, return a json object with function name and arguments within <tool_call></tool_call> XML tags:

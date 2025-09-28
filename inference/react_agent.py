@@ -23,6 +23,8 @@ from tool_scholar import *
 # from tool_python import *
 from tool_search import *
 from tool_visit import *
+from tool_list_dir import *
+from tool_open_file import *
 
 OBS_START = '<tool_response>'
 OBS_END = '\n</tool_response>'
@@ -34,6 +36,8 @@ TOOL_CLASS = [
     Scholar(),
     Visit(),
     Search(),
+    ReadFileTool(),
+    ListDirectoryTool(),
     # PythonInterpreter(),
 ]
 TOOL_MAP = {tool.name: tool for tool in TOOL_CLASS}
@@ -73,6 +77,8 @@ class MultiTurnReactAgent(FnCallAgent):
             try:
                 print(f"--- Attempting to call the service, try {attempt + 1}/{max_tries} ---")
                 chat_response = client.chat.completions.create(
+                    # deepseek/deepseek-v3.1-terminus
+                    # alibaba/tongyi-deepresearch-30b-a3b
                     model="alibaba/tongyi-deepresearch-30b-a3b",
                     messages=msgs,
                     stop=["\n<tool_response>", "<tool_response>"],

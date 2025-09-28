@@ -14,7 +14,7 @@ PYTHONDONTWRITEBYTECODE=1
 # Model and Inference Hyperparameters
 # =============================================================================
 MODEL_PATH=alibaba/tongyi-deepresearch-30b-a3b
-DATASET=eval_data/example.jsonl
+DATASET=eval_data/example_with_local_tool.jsonl
 OUTPUT_PATH=output
 ROLLOUT_COUNT=1
 TEMPERATURE=0.85
