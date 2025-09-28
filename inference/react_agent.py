@@ -15,6 +15,7 @@ from qwen_agent.tools import BaseTool
 from qwen_agent.utils.utils import format_as_text_message, merge_generate_cfgs
 from prompt import *
 import time
+import tiktoken
 import asyncio
 
 from tool_file import *
@@ -116,12 +117,15 @@ class MultiTurnReactAgent(FnCallAgent):
         return f"vllm server error!!!"
 
     def count_tokens(self, messages):
-        tokenizer = AutoTokenizer.from_pretrained(self.llm_local_path) 
-        full_prompt = tokenizer.apply_chat_template(messages, tokenize=False)
-        tokens = tokenizer(full_prompt, return_tensors="pt")
-        token_count = len(tokens["input_ids"][0])
+        try: 
+            tokenizer = AutoTokenizer.from_pretrained(self.llm_local_path) 
+        except Exception as e: 
+            tokenizer = tiktoken.encoding_for_model("gpt-4o")
         
-        return token_count
+        full_message = [Message(**x) for x in messages]
+        full_prompt = build_text_completion_prompt(full_message, allow_special=True)
+        
+        return len(tokenizer.encode(full_prompt))
 
     def _run(self, data: str, model: str, **kwargs) -> List[List[Message]]:
         self.model=model
