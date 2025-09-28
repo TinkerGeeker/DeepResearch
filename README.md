@@ -37,6 +37,11 @@
 <p align="center">
 <a href="https://trendshift.io/repositories/14895" target="_blank"><img src="https://trendshift.io/api/badge/repositories/14895" alt="Alibaba-NLP%2FDeepResearch | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
+
+👏 Welcome to try Tongyi DeepResearch via our **[<img src="./assets/tongyi.png" width="14px" style="display:inline;"> Modelscope online demo](https://www.modelscope.cn/studios/jialongwu/Tongyi-DeepResearch)** or **[🤗 Huggingface online demo](https://huggingface.co/spaces/Alibaba-NLP/Tongyi-DeepResearch)** or <img src="./WebAgent/assets/aliyun.png" width="14px" style="display:inline;">  **[bailian service](https://bailian.console.aliyun.com/?spm=a2ty02.31808181.d_app-market.1.6c4974a1tFmoFc&tab=app#/app/app-market/deep-search/)**!
+> [!NOTE]
+> This demo is for quick exploration only. Response times may vary or fail intermittently due to model latency and tool QPS limits. For a stable experience we recommend local deployment; for a production-ready service, visit  <img src="./WebAgent/assets/aliyun.png" width="14px" style="display:inline;"> [bailian](https://bailian.console.aliyun.com/?spm=a2ty02.31808181.d_app-market.1.6c4974a1tFmoFc&tab=app#/app/app-market/deep-search/) and follow the guided setup.
+
 # Introduction
 
 We present <img src="./assets/tongyi.png" width="14px" style="display:inline;"> **Tongyi DeepResearch**, an agentic large language model featuring 30.5 billion total parameters, with only 3.3 billion activated per token. Developed by Tongyi Lab, the model is specifically designed for **long-horizon, deep information-seeking** tasks. Tongyi DeepResearch demonstrates state-of-the-art performance across a range of agentic search benchmarks, including Humanity's Last Exam, BrowserComp, BrowserComp-ZH, WebWalkerQA,xbench-DeepSearch, FRAMES and SimpleQA.
