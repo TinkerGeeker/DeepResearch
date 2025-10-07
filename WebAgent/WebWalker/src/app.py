@@ -12,6 +12,8 @@ import base64
 from PIL import Image
 from bs4 import BeautifulSoup
 
+os.environ['OPENAI_API_BASE'] = 'https://openrouter.ai/api/v1'
+os.environ['OPENAI_MODEL_SERVER'] = 'https://openrouter.ai/api/v1'
 
 
 if 'DASHSCOPE_API_KEY' not in os.environ and 'OPENAI_API_KEY' not in os.environ:
@@ -27,9 +29,10 @@ if 'DASHSCOPE_API_KEY' in os.environ:
                 'max_input_tokens': 120000,
                 'max_retries': 20
         },
+
     }
 if 'OPENAI_API_KEY' in os.environ and 'OPENAI_MODEL_SERVER' in os.environ:
-    model = "gpt-4o"
+    model = "deepseek/deepseek-chat-v3.1:free"
     llm_cfg = {
         'model': model,
         'api_key': os.getenv('OPENAI_API_KEY'),
@@ -162,7 +165,7 @@ if __name__ == "__main__":
                     BUTTON_URL_ADIC = {}
                     ROOT_URL = website
                     with open("ROOT_URL.txt", "w") as f:
-                        f.write("https://2025.aclweb.org/")
+                        f.write(ROOT_URL)
                     messages = []  # This stores the chat history.
                     visited_links = []
                     start_prompt = "query:\n{query} \nofficial website:\n{website}".format(query=query, website=website)
